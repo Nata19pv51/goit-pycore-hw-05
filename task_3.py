@@ -26,15 +26,15 @@ def load_logs(file_path: str) -> list:
     return file_lst
     
 def filter_logs_by_level(logs: list, level: str) -> list:
-    filtered_list = []
-    even_nums = filter(lambda logs: line["level"] for line in logs), range(1, 11))
-    # Фільтрацію за рівнем логування 
-    # отримати всі записи логу для певного рівня логування
+    filtered_list = filter(lambda item: item['level'] == level, logs)
+    filtered_list = list(filtered_list)
     return filtered_list
 
 
 list_file = load_logs("log.txt")
-print(list_file)
+filtered_lst = filter_logs_by_level(list_file, "ERROR")
+# print(list_file)
+print(filtered_lst)
 
 
 
