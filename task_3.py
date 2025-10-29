@@ -54,11 +54,12 @@ def display_log_counts(counts: dict):
 
 
 if __name__ == "__main__":
-    list_file = load_logs("log.txt")
+    file = sys.argv[1]
+    list_file = load_logs(file)
     levels_count = count_logs_by_level(list_file)
 
-    if len(sys.argv) > 1:
-        first_argument = sys.argv[1].upper()
+    if len(sys.argv) > 2:
+        first_argument = sys.argv[2].upper()
         
         # Print error levels and their counts:
         display_log_counts(levels_count)

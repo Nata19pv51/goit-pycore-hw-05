@@ -18,16 +18,21 @@ def parse_input(user_input):
 
 @input_error
 def add_contact(args, contacts):
-    name, phone = args
+    name = args[0]
+    phone = args[1]
     contacts[name] = phone
     return "Contact added."
 
 @input_error
 def change_contact(args, contacts):
     name, phone = args
-    contacts.update({name: phone})
+    if name in contacts:
+        contacts.update({name: phone})
+    else:
+        raise KeyError()
+
     return "Contact updated."
-        
+    
     # if name in contacts:
     #     contacts.update({name: phone})
     #     return "Contact updated."
